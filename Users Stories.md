@@ -1,9 +1,5 @@
 # User Stories
 
-## Format
-
-As a [type of user], I want to [do something], so that [reason/benefit].
-
 -   As a user, I want to create a challenge with a goal, duration, name and point allocation rules, so that I and others can commit to it
 -   As a user, I want to join a challenge, so that I can do things others are doing
 -   As a user, I want to track my progress in a determinated challenge, so that I can know how i'm doing
