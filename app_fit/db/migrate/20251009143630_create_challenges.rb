@@ -7,8 +7,7 @@ class CreateChallenges < ActiveRecord::Migration[8.0]
       t.date :end_date
       t.string :visibility
       t.string :category
-      t.references :scoring_rule, null: false, foreign_key: true
-
+      t.references :scoring_rule, null: true, foreign_key: true
       t.timestamps
     end
   end

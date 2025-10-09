@@ -3,7 +3,7 @@ class CreateParticipations < ActiveRecord::Migration[8.0]
     create_table :participations do |t|
       t.references :user, null: false, foreign_key: true
       t.references :challenge, null: false, foreign_key: true
-      t.timestamp :joined_at
+      t.datetime :joined_at
       t.string :status
       t.integer :total_points
 
