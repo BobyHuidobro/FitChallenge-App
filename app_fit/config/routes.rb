@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "home#index"
+  root "challenges#index"
   resources :challenges
+  resources :users
+  resources :scoring_rules
+  resources :badges
 end

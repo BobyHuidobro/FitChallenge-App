@@ -1,0 +1,25 @@
+<div class="container">
+    <h1><%= @challenge.name %></h1>
+    <p>Start date: <%= @challenge.start_date %></p>
+    <p>End date: <%= @challenge.end_date %></p>
+    <p>Created by: <%= @challenge.user&.username || "Unknown" %></p>
+    <div>
+        <h2>Description</h2>
+        <% if @challenge.description.present? %>
+            <p><%= @challenge.description %></p>
+        <% else %>
+            <p>No description available.</p>
+        <% end %>
+    </div>
+    <div>
+        <h2>Scoring Rules</h2>
+        <% if @challenge.scoring_rule.present? %>
+            <p><%= link_to @challenge.scoring_rule.rule_type, scoring_rule_path(@challenge.scoring_rule) %></p>
+        <% else %>
+            <p>No scoring rule assigned.</p>
+        <% end %>
+    </div>
+    <p>Visibility: <%= @challenge.visibility %></p>
+</div>
+
+

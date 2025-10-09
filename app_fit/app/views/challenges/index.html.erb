@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Challenges</h1>
+
+    <ul>
+        <% @challenges.each do |challenge| %>
+            <li>
+                <h2><%= link_to challenge.name, challenge_path(challenge) %></h2>
+            </li>
+        <% end %>
+    </ul>
+</div>
