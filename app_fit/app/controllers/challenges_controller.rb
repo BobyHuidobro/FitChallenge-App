@@ -6,9 +6,12 @@ class ChallengesController < ApplicationController
     end
 
     def show
-        #implementar leaderboard con un partial
-        #mostrar participation con partial
-        #mostrar progressEntry con partial
+        # Carga el leaderboard ordenado por rank (o por total_points si rank está vacío)
+        @leaderboards = @challenge.leaderboards.includes(:user).order(rank: :asc, total_points: :desc)
+        
+        # También puedes cargar las participaciones y progress entries si los necesitas
+        @participations = @challenge.participations.includes(:user)
+        @progress_entries = @challenge.progress_entries.includes(:user).order(entry_date: :desc)
     end
 
     private

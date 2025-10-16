@@ -1,0 +1,50 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h2 class="mb-4" style="color: #2F855A;">🏆 Leaderboard</h2>
+    
+    <% if @leaderboards.any? %>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead style="background-color: #2F855A; color: white;">
+            <tr>
+              <th scope="col" class="text-center" style="width: 80px;">Rank</th>
+              <th scope="col">Usuario</th>
+              <th scope="col" class="text-center">Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @leaderboards.each_with_index do |leaderboard, index| %>
+              <tr class="<%= 'table-warning' if index == 0 %> <%= 'table-secondary' if index == 1 %> <%= 'table-light' if index == 2 %>">
+                <td class="text-center">
+                  <% if index == 0 %>
+                    <span style="font-size: 1.5rem;">🥇</span>
+                  <% elsif index == 1 %>
+                    <span style="font-size: 1.5rem;">🥈</span>
+                  <% elsif index == 2 %>
+                    <span style="font-size: 1.5rem;">🥉</span>
+                  <% else %>
+                    <strong><%= leaderboard.rank || index + 1 %></strong>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to leaderboard.user.username, user_path(leaderboard.user), 
+                      class: "text-decoration-none", 
+                      style: "color: #2C7A7B; font-weight: 500;" %>
+                </td>
+                <td class="text-center">
+                  <span class="badge rounded-pill" style="background-color: #38B2AC; font-size: 1rem;">
+                    <%= leaderboard.total_points || 0 %> pts
+                  </span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> No hay participantes en el leaderboard aún. ¡Sé el primero en participar!
+      </div>
+    <% end %>
+  </div>
+</div>

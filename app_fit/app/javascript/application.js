@@ -5,4 +5,7 @@ import "controllers"
 import "trix"
 import "@rails/actiontext"
 
-import "bootstrap"
+import * as bootstrap from "bootstrap"
+
+// Hacer bootstrap global para que funcione con data-bs-toggle
+window.bootstrap = bootstrap
