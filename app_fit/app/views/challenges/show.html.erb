@@ -1,25 +1,48 @@
-<div class="container">
-    <h1><%= @challenge.name %></h1>
-    <p>Start date: <%= @challenge.start_date %></p>
-    <p>End date: <%= @challenge.end_date %></p>
-    <p>Created by: <%= @challenge.user&.username || "Unknown" %></p>
-    <div>
-        <h2>Description</h2>
-        <% if @challenge.description.present? %>
-            <p><%= @challenge.description %></p>
-        <% else %>
-            <p>No description available.</p>
-        <% end %>
+<div class="container mt-5">
+     <%= link_to "← Back to Challenges", challenges_path, class: "btn text-white mb-4", style: "background-color: #2F855A;" %>
+    
+     <div class="card mx-auto" style="max-width: 1500px">
+        <div class="card-body">
+            <h1><%= @challenge.name %></h1>
+        </div>
+        <div class="card-body">
+            <p>Start date: <%= @challenge.start_date %></p>
+            <p>End date: <%= @challenge.end_date %></p>
+            <p>Created by: <%= @challenge.user&.username || "Unknown" %></p>
+        </div>
+        <div class="card-body">
+            <h2>Description</h2>
+            <% if @challenge.description.present? %>
+                <p><%= @challenge.description %></p>
+            <% else %>
+                <p>No description available.</p>
+            <% end %>
+        </div>
+        <div class="card-body">
+            <h2 class="mb-3" style="color: #2F855A;">Scoring Rules</h2>
+            <% if @challenge.scoring_rule.present? %>
+                <div class="card" style="border-left: 4px solid #38B2AC; background-color: #F7FAFC;">
+                    <div class="card-body">
+                        <h4 class="mb-3">
+                            <%= link_to @challenge.scoring_rule.rule_type, scoring_rule_path(@challenge.scoring_rule), 
+                                class: "text-decoration-none", 
+                                style: "color: #2C7A7B; font-weight: 600;" %>
+                        </h4>
+                        <p class="mb-0" style="color: #4A5568; line-height: 1.6;">
+                            <%= @challenge.scoring_rule.description %>
+                        </p>
+                    </div>
+                </div>
+            <% else %>
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i> No scoring rule assigned.
+                </div>
+            <% end %>
+        </div>
+        <div class="card-body">
+            <p>Visibility: <%= @challenge.visibility %></p>
+        </div>
     </div>
-    <div>
-        <h2>Scoring Rules</h2>
-        <% if @challenge.scoring_rule.present? %>
-            <p><%= link_to @challenge.scoring_rule.rule_type, scoring_rule_path(@challenge.scoring_rule) %></p>
-        <% else %>
-            <p>No scoring rule assigned.</p>
-        <% end %>
-    </div>
-    <p>Visibility: <%= @challenge.visibility %></p>
 </div>
 
 

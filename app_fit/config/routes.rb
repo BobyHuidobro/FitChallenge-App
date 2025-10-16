@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "challenges#index"
   resources :challenges
-  resources :users
+  resources :users do
+    resources :user_badges, only: [:index]
+  end
   resources :scoring_rules
   resources :badges
 end
