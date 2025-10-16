@@ -1,22 +1,22 @@
 <div class="container mt-4">
     <div class="card shadow-sm mb-4">
-        <div class="card-body text-center py-4 bg-gradient bg-primary text-white rounded">
-            <h1 class="display-4 mb-2">¡Hola, <%= @user.username %>!</h1>
-            <p class="lead mb-0">Bienvenido de vuelta</p>
+        <div class="card-body text-center py-4 rounded" style="background: linear-gradient(135deg, #2F855A, #38B2AC);">
+            <h1 class="display-4 mb-2 text-white">¡Hi, <%= @user.username %>!</h1>
+            <p class="lead mb-0 text-white">Welcome back!</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">📊 Participaciones</h5>
+                <div class="card-header text-white" style="background-color: #2F855A;">
+                    <h5 class="mb-0">📊 Participations</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <% @user.participations.each do |participation| %>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span><strong><%= participation.challenge.name %></strong></span>
-                            <span class="badge bg-success rounded-pill"><%= participation.total_points %> pts</span>
+                            <span class="badge rounded-pill" style="background-color: #38B2AC;"><%= participation.total_points %> pts</span>
                         </li> 
                     <% end %>
                 </ul>
@@ -25,8 +25,8 @@
 
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card shadow-sm h-100">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0">📈 Progresos</h5>
+                <div class="card-header text-white" style="background-color: #2C7A7B;">
+                    <h5 class="mb-0">📈 Progress</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <% @user.progress_entries.each do |progress| %>
@@ -44,7 +44,7 @@
         <div class="col-lg-4 col-md-12 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-header bg-warning text-dark">
-                    <h5 class="mb-0">🏆 Insignias</h5>
+                    <h5 class="mb-0">🏆 Badges</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <% @user.user_badges.each do |badge| %>
