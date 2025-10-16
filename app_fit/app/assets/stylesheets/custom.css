@@ -49,10 +49,16 @@ body {
 
 .navbar-brand {
     color: white !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .navbar .nav-item {
     background-color: transparent !important;
+}
+
+.navbar .nav-item:hover {
+    background-color: var(--color-primario-hover) !important;
 }
 
 .navbar .nav-link {
@@ -62,7 +68,7 @@ body {
 
 .navbar .nav-link:hover {
     color: white !important;
-    background-color: transparent !important;
+    background-color: var(--color-primario-hover) !important;
 }
 
 .navbar .nav-link.active {
@@ -75,11 +81,6 @@ body {
     background-color: transparent !important;
 }
 
-.navbar .dropdown-toggle:hover {
-    color: white !important;
-    background-color: transparent !important;
-}
-
 /* Toggler para móvil */
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.3) !important;
@@ -89,10 +90,22 @@ body {
     filter: invert(1) !important;
 }
 
-/* ==================== CONTAINERS ==================== */
-.container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+.navbar .container-fluid {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.navbar-collapse {
+    align-items: center !important;
+}
+
+.navbar-nav {
+    align-items: center !important;
+}
+
+/* Asegura que el formulario esté alineado */
+.navbar form.d-flex {
+    margin: 0 !important;
 }
 
 /* ==================== HEADINGS ==================== */
@@ -126,9 +139,7 @@ li {
     background-color: var(--fondo-secundario);
 }
 
-li:hover {
-    background-color: #f0f0f0;
-}
+
 
 /* ==================== PARAGRAPHS ==================== */
 p {
