@@ -15,7 +15,17 @@ class User < ApplicationRecord
   has_many :badges, through: :user_badges
   has_many :scoring_rules
   
+  # Callbacks para valores por defecto
+  before_validation :set_default_role, on: :create
+  
   # Validates
   validates :username, presence: true, uniqueness: true
   validates :role, presence: true
+  validates :role, inclusion: { in: %w[user admin], message: "%{value} is not a valid role" }
+  
+  private
+  
+  def set_default_role
+    self.role ||= 'user'
+  end
 end
