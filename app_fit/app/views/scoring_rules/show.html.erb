@@ -1,1 +1,18 @@
-<h1><%= @scoring_rule.rule_type %></h1>
+<div class="container mt-5">
+    <%= link_to "← Back to Scoring Rules", scoring_rules_path, class: "btn text-white mb-4", style: "background-color: #2F855A;" %>
+
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body text-center">
+
+            <h1 class="display-5 mb-3 fw-bold" style="color: #2F855A;"><%= @scoring_rule.rule_type %></h1>
+            <% if @scoring_rule.description.present? %>
+                <p class="text-muted"><%= @scoring_rule.description %></p>
+            <% else %>
+                <p class="text-muted">No description avalaible.</p>
+            <% end %>
+            <p>Created by: <%= @scoring_rule.user&.username || "Unknown" %></p>
+
+        </div>
+    </div>
+    
+</div>
