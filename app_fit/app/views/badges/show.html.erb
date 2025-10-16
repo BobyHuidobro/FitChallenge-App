@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <%= link_to "← Back to Badges", badges_path, class: "btn text-white mb-4", style: "background-color: #2F855A;" %>
+
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body text-center">
+
+            <img src="<%= @badge.icon_url %>" alt="<%= @badge.name %>" class="mb-4" style="width: 120px; height: 120px; display: block; margin: 0 auto;">
+            <h1 class="display-5 mb-3 fw-bold" style="color: #2F855A;"><%= @badge.name %></h1>
+            <% if @badge.description.present? %>
+                <p class="text-muted"><%= @badge.description %></p>
+            <% else %>
+                <p class="text-muted">No description avalaible.</p>
+            <% end %>
+
+        </div>
+    </div>
+    
+</div>
