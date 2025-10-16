@@ -1,0 +1,281 @@
+/* ============================================
+   FITCHALLENGE APP - CUSTOM STYLES
+   Solo estilos que realmente se usan en la app
+   ============================================ */
+
+:root {
+    /* === COLORES PRINCIPALES === */
+    --color-primario: #2f855a;           /* Verde oscuro */
+    --color-primario-hover: #276749;     /* Verde más oscuro */
+    --color-primario-light: #48bb78;     /* Verde claro */
+    
+    --color-secundario: #38b2ac;         /* Turquesa */
+    --color-secundario-hover: #319795;   /* Turquesa oscuro */
+    --color-secundario-light: #81e6d9;   /* Turquesa claro */
+    
+    --color-acento: #2c7a7b;             /* Teal oscuro */
+    
+    /* === FONDOS === */
+    --fondo-principal: #f7fafc;          /* Gris muy claro */
+    --fondo-secundario: #ffffff;         /* Blanco */
+    --fondo-suave: #e6fffa;              /* Verde agua suave */
+    
+    /* === TEXTOS === */
+    --texto-principal: #1a202c;          /* Gris oscuro */
+    --texto-secundario: #4a5568;         /* Gris medio */
+    --texto-claro: #718096;              /* Gris claro */
+    --texto-blanco: #ffffff;             /* Blanco */
+    
+    /* === BORDES === */
+    --borde-principal: #e2e8f0;          /* Gris claro */
+    --borde-resaltado: #38b2ac;          /* Turquesa */
+    
+    /* === SOMBRAS === */
+    --sombra-suave: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --sombra-navbar: 0 2px 8px rgba(47, 133, 90, 0.3);
+    
+    /* === GRADIENTES === */
+    --gradiente-primario: linear-gradient(135deg, #2f855a 0%, #2c7a7b 100%);
+}
+
+/* ==================== BODY ==================== */
+body {
+    background-color: var(--fondo-principal) !important;
+    color: var(--texto-principal) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+}
+
+/* ==================== NAVBAR ==================== */
+/* Navbar simple: solo color de fondo y texto */
+.navbar {
+    background-color: var(--color-primario) !important;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.navbar .nav-item {
+    background-color: transparent !important;
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background-color: transparent !important;
+}
+
+.navbar .nav-link:hover {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.navbar .nav-link.active {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.navbar .dropdown-toggle {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background-color: transparent !important;
+}
+
+.navbar .dropdown-toggle:hover {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+/* Toggler para móvil */
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1) !important;
+}
+
+/* ==================== CONTAINERS ==================== */
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* ==================== HEADINGS ==================== */
+h1 {
+    color: var(--color-primario) !important;
+}
+
+h2 {
+    color: var(--color-primario) !important;
+}
+
+/* ==================== LINKS ==================== */
+a {
+    color: var(--color-primario);
+}
+
+a:hover {
+    color: var(--color-primario-hover);
+}
+
+/* ==================== LISTS (Challenges) ==================== */
+/* Simple: sin bordes fancy, sin animaciones, solo hover con color más oscuro */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--fondo-secundario);
+}
+
+li:hover {
+    background-color: #f0f0f0;
+}
+
+/* ==================== PARAGRAPHS ==================== */
+p {
+    color: var(--texto-secundario);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* ==================== FORMS ==================== */
+.field {
+    margin-bottom: 1.5rem;
+}
+
+.field label {
+    display: block;
+    font-weight: 600;
+    color: var(--texto-principal);
+    margin-bottom: 0.5rem;
+}
+
+/* Form Controls */
+.form-control,
+.form-select,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem !important;
+    border: 2px solid var(--borde-principal) !important;
+    border-radius: 0.5rem !important;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--fondo-secundario) !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: var(--color-secundario) !important;
+    box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.1) !important;
+    outline: none;
+}
+
+/* Form Text (small helper text) */
+.form-text {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.form-text.text-muted,
+.text-muted,
+small.text-muted {
+    color: var(--texto-claro) !important;
+}
+
+/* Form Actions (botones de submit) */
+.actions {
+    margin-top: 1.5rem;
+}
+
+.actions input[type="submit"] {
+    background-color: var(--color-primario) !important;
+    color: var(--texto-blanco) !important;
+    border: none !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: 0.5rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.actions input[type="submit"]:hover {
+    background-color: var(--color-primario-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.3);
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primario) !important;
+    color: var(--texto-blanco) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primario-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--color-secundario) !important;
+    color: var(--texto-blanco) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secundario-hover) !important;
+}
+
+/* Botón outline del navbar (search) */
+.btn-outline-success {
+    border: 2px solid var(--texto-blanco) !important;
+    color: var(--texto-blanco) !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--texto-blanco) !important;
+    color: var(--color-primario) !important;
+    border-color: var(--texto-blanco) !important;
+}
+
+/* ==================== UTILITIES ==================== */
+.text-primary {
+    color: var(--color-primario) !important;
+}
+
+.text-secondary {
+    color: var(--texto-secundario) !important;
+}
+
+.bg-primary {
+    background-color: var(--color-primario) !important;
+}
+
+.bg-secondary {
+    background-color: var(--color-secundario) !important;
+}
