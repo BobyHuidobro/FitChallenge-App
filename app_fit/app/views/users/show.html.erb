@@ -1,0 +1,61 @@
+<div class="container mt-4">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center py-4 bg-gradient bg-primary text-white rounded">
+            <h1 class="display-4 mb-2">¡Hola, <%= @user.username %>!</h1>
+            <p class="lead mb-0">Bienvenido de vuelta</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📊 Participaciones</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <% @user.participations.each do |participation| %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong><%= participation.challenge.name %></strong></span>
+                            <span class="badge bg-success rounded-pill"><%= participation.total_points %> pts</span>
+                        </li> 
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📈 Progresos</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <% @user.progress_entries.each do |progress| %>
+                        <li class="list-group-item">
+                            <small class="text-muted"><%= progress.entry_date %></small>
+                            <br>
+                            <strong><%= progress.challenge.name %></strong>
+                            <span class="badge bg-warning text-dark ms-2"><%= progress.points_awarded %> pts</span>
+                        </li> 
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🏆 Insignias</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <% @user.user_badges.each do |badge| %>
+                        <li class="list-group-item">
+                            <strong><%= badge.badge.name %></strong>
+                            <br>
+                            <small class="text-muted">Obtenida: <%= badge.awarded_at.strftime("%d/%m/%Y") %></small>
+                        </li> 
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

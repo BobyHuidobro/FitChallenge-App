@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show]
 
     # INDEX: no es estrictamente necesario salvo si deseas directorio público; si lo implementas, mostrar username y link al perfil.
 
     def show
-        #mostrar participations con partial
-        #mostrar progressEntries con partial
-        #mostrar userBadges con partial
+        @participations = @user.participations
+        @progress_entries = @user.progress_entries
+        @user_badges = @user.user_badges
     end
 
     private
