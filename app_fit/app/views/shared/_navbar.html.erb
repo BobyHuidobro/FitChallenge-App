@@ -11,6 +11,9 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link #{current_page?(root_path) ? 'active' : ''}" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Scoring Rules", scoring_rules_path, class: "nav-link #{current_page?(scoring_rules_path) ? 'active' : ''}" %>
+        </li>
       </ul>
       <form class="d-flex mx-auto" role="search" style="max-width: 400px;">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -28,6 +31,7 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <% if user_signed_in? %>
               <li><%= link_to "User Profile", user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "My Badges", user_badges_path(current_user), class: "dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">Settings<a/></li>
               <li><hr class="dropdown-divider"></li>
 

@@ -1,5 +1,5 @@
 class ScoringRulesController < ApplicationController
-    before_action :set_scoring_rule, only: [:show, :edit, :update, :destroy]
+    before_action :set_scoring_rule, only: [:show]
 
     def index
         @scoring_rules = ScoringRule.all

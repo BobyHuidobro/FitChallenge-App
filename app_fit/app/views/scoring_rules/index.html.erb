@@ -1,0 +1,24 @@
+</div><div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5" style="color: #2F855A;">📝 Scoring Rules</h1>
+    </div>
+
+    <div class="row">
+        <% @scoring_rules.each do |rule| %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">
+                            <%= link_to rule.rule_type, scoring_rule_path(rule), class: "text-decoration-none", style: "color: #2C7A7B;" %>
+                        </h4>
+                        <p><%= rule.description %></p>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <%= link_to "Ver detalles", scoring_rule_path(rule), class: "btn btn-sm text-white", style: "background-color: #2F855A;" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
