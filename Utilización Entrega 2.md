@@ -38,11 +38,8 @@ Este documento explica cómo acceder a las vistas principales (índice y detalle
   - Ejemplo: `/scoring_rules/1`
 
 ## 5. Leaderboards (Tablas de Posiciones)
-- **Listado (index):**
-  - `/leaderboards`
-- **Detalle (show):**
-  - `/leaderboards/:id `
-  - Ejemplo: `/leaderboards/1`
+- **Listado (show)**
+  - Se tiene un leaderboard por challenge el cual aparece dentro de este.
 
 ## 6. Participations (Participaciones)
 - **Listado (index):**
