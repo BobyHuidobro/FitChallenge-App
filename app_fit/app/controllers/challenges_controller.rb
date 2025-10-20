@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-    before_action :set_challenge, only: [:show]
+    before_action :set_challenge, only: [:show, :edit, :update, :destroy]
 
     def index
         @challenges = Challenge.all
@@ -12,6 +12,38 @@ class ChallengesController < ApplicationController
         # También puedes cargar las participaciones y progress entries si los necesitas
         @participations = @challenge.participations.includes(:user)
         @progress_entries = @challenge.progress_entries.includes(:user).order(entry_date: :desc)
+    end
+
+    def new
+        @challenge = current_user.challenges.build
+        @scoring_rules = ScoringRule.all
+    end
+
+    def create
+        @challenge = current_user.challenges.build challenge_params
+        @scoring_rules = ScoringRule.all
+        if @challenge.save
+            redirect_to challenge_path(@challenge)
+        else
+            redirect_to new_challenge_path, alert: @recipe.errors.full_messages.to_sentence
+        end
+    end
+
+    def edit
+        @scoring_rules = ScoringRule.all
+    end
+
+    def update
+        if @challenge.update challenge_params
+            redirect_to challenge_path(@challenge), notice: "Challenge updated successfully."
+        else
+            redirect_to edit_challenge_path(@challenge), alert: @challenge.errors.full_messages.to_sentence
+        end
+    end
+
+    def destroy
+        @challenge.destroy
+        redirect_to challenges_path
     end
 
     private

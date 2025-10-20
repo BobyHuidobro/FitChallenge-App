@@ -1,0 +1,32 @@
+<%= form_with model: @challenge do |c| %>
+    <div class="col-4 mb-3">
+        <%= c.label :name, "Title", class: "form-label" %>
+        <%= c.text_field :name, placeholder: "Title of the Challenge", class: "form-control" %>
+    </div>
+    <div class="col-4 mb-3">
+        <%= c.label :start_date, "Start Date:", class: "form-label" %>
+        <%= c.date_select :start_date, class: "form-control" %>
+    </div>
+    <div class="col-4 mb-3">
+        <%= c.label :end_date, "End Date:", class: "form-label" %>
+        <%= c.date_select :end_date, class: "form-control" %>
+    </div>
+    <div class="col-8 mb-3">
+        <%= c.rich_textarea :description, class: "form-control" %>
+    </div>
+    <div class="col-5 mb-3 ">
+        <%= c.label :visibility, "Visibility", class: "form-label" %>
+        <%= c.select :visibility, ["Public", "Private"], placeholder: "Visibility", class: "form-select" %>
+    </div>
+    <div class="col-5 mb-3 ">
+        <%= c.label :category, "Category", class: "form-label" %>
+        <%= c.select :category, ["Category 1", "Category 2"], class: "form-select" %>
+    </div>
+    <div class="col-6 mb-3">
+        <%= c.label :scoring_rule_id, "Scoring Rule", class: "form-label" %>
+        <%= c.collection_select :scoring_rule_id, (@scoring_rules || ScoringRule.all), :id, :rule_type, {include_blank: "Select a scoring rule" }, {class: "form-select" } %>
+        <% if @challenge.errors[:scoring_rule_id].any? %>
+            <div class="text-danger small"><%= @challenge.errors[:scoring_rule_id].first %></div>
+        <% end %>
+    </div>
+<% end %>
