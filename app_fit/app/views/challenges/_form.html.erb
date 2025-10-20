@@ -12,7 +12,7 @@
         <%= c.date_select :end_date, class: "form-control" %>
     </div>
     <div class="col-8 mb-3">
-        <%= c.rich_textarea :description, class: "form-control" %>
+        <%= c.rich_text_area :description, class: "form-control" %>
     </div>
     <div class="col-5 mb-3 ">
         <%= c.label :visibility, "Visibility", class: "form-label" %>
@@ -29,4 +29,5 @@
             <div class="text-danger small"><%= @challenge.errors[:scoring_rule_id].first %></div>
         <% end %>
     </div>
+    <%= link_to "Cancel", challenges_path, class: "btn btn-danger" %> <%= c.submit "Save", class: "btn btn-primary" %>
 <% end %>
