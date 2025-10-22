@@ -1,4 +1,14 @@
 <%= form_with model: @challenge do |c| %>
+    <% if @challenge.errors.any? %>
+        <div class="alert alert-danger">
+            <h5>There were errors with your submission:</h5>
+            <ul>
+                <% @challenge.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
     <div class="col-4 mb-3">
         <%= c.label :name, "Title", class: "form-label" %>
         <%= c.text_field :name, placeholder: "Title of the Challenge", class: "form-control" %>

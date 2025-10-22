@@ -17,7 +17,7 @@ class ScoringRulesController < ApplicationController
         if @scoring_rule.save
             redirect_to scoring_rule_path(@scoring_rule)
         else
-            redirect_to new_scoring_rule_path, alert: @scoring_rule.errors.full_messages.to_sentence
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -28,7 +28,7 @@ class ScoringRulesController < ApplicationController
         if @scoring_rule.update scoring_rule_params
             redirect_to scoring_rule_path(@scoring_rule), notice: "Scoring Rule updated successfully."
         else
-            redirect_to edit_scoring_rule_path(@scoring_rule), alert: @scoring_rule.errors.full_messages.to_sentence
+            render :edit, status: :unprocessable_entity
         end
     end
 

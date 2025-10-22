@@ -1,4 +1,5 @@
 class ChallengesController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :set_challenge, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -25,7 +26,8 @@ class ChallengesController < ApplicationController
         if @challenge.save
             redirect_to challenge_path(@challenge)
         else
-            redirect_to new_challenge_path, alert: @recipe.errors.full_messages.to_sentence
+            # render new to preserve form data and show validation errors
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -37,7 +39,7 @@ class ChallengesController < ApplicationController
         if @challenge.update challenge_params
             redirect_to challenge_path(@challenge), notice: "Challenge updated successfully."
         else
-            redirect_to edit_challenge_path(@challenge), alert: @challenge.errors.full_messages.to_sentence
+            render :edit, status: :unprocessable_entity
         end
     end
 

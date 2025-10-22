@@ -1,4 +1,14 @@
 <%= form_with model: @scoring_rule do |sc| %>
+    <% if @scoring_rule.errors.any? %>
+        <div class="alert alert-danger">
+            <h5>There were errors with your submission:</h5>
+            <ul>
+                <% @scoring_rule.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
     <div class="col-4 mb-3">
         <%= sc.label :rule_type, "Rule Type", class: "form-label" %>
         <%= sc.text_field :rule_type, placeholder: "Type of the rule (name)", class: "form-control" %>
