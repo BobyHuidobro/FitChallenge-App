@@ -39,5 +39,6 @@
             <div class="text-danger small"><%= @challenge.errors[:scoring_rule_id].first %></div>
         <% end %>
     </div>
-    <%= link_to "Cancel", challenges_path, class: "btn btn-danger" %> <%= c.submit "Save", class: "btn btn-primary" %>
+    <% cancel_path = @challenge.persisted? ? challenge_path(@challenge) : challenges_path %>
+    <%= link_to "Cancel", cancel_path, class: "btn btn-danger" %> <%= c.submit "Save", class: "btn btn-primary" %>
 <% end %>
