@@ -2,6 +2,8 @@ class Challenge < ApplicationRecord
   belongs_to :user
   belongs_to :scoring_rule
 
+  accepts_nested_attributes_for :scoring_rule, reject_if: :all_blank
+
   has_rich_text :description
 
   ##relaciones faltantes

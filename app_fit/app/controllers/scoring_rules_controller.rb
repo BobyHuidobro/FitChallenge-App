@@ -15,7 +15,7 @@ class ScoringRulesController < ApplicationController
     def create
         @scoring_rule = current_user.scoring_rules.build scoring_rule_params
         if @scoring_rule.save
-            redirect_to scoring_rule_path(@scoring_rule)
+            redirect_to new_challenge_path
         else
             render :new, status: :unprocessable_entity
         end
@@ -44,5 +44,10 @@ class ScoringRulesController < ApplicationController
 
     def scoring_rule_params
         params.require(:scoring_rule).permit(:rule_type, :description)
+    end
+
+    def uri_is_local?(path)
+        uri = URI.parse(path) rescue nil
+        uri && uri.host.nil?
     end
 end
