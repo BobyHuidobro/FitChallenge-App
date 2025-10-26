@@ -1,0 +1,52 @@
+<div class="container mt-4">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center py-4 rounded" style="background: linear-gradient(135deg, #2F855A, #38B2AC);">
+            <h1 class="display-5 mb-2 text-white">
+                <%= badge.persisted? ? "✏️ Edit Badge" : "🏆 New Badge" %>
+            </h1>
+            <p class="lead mb-0 text-white">Create achievement badges for challenges</p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <%= form_with model: badge, local: true do |f| %>
+                <% if badge.errors.any? %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" aria-live="assertive">
+                        <h5 class="alert-heading"><strong>⚠️ There are <%= badge.errors.count %> errors:</strong></h5>
+                        <ul class="mb-0">
+                            <% badge.errors.full_messages.each do |m| %>
+                                <li><%= m %></li>
+                            <% end %>
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <% end %>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <%= f.label :name, class: "form-label" %>
+                        <%= f.text_field :name, class: 'form-control', placeholder: "Badge name" %>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <%= f.label :icon_url, 'Icon URL', class: "form-label" %>
+                        <%= f.url_field :icon_url, class: 'form-control', placeholder: "https://example.com/icon.png" %>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <%= f.label :description, class: "form-label" %>
+                        <%= f.text_area :description, class: 'form-control', rows: 4, placeholder: "Describe the badge requirements and purpose..." %>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                    <%= link_to "Cancel", badges_path, class: "btn btn-danger px-4" %>
+                    <%= f.submit class: 'btn btn-primary px-5' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
