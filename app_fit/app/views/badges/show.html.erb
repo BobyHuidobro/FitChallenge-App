@@ -4,9 +4,13 @@
                 <%= link_to "← Back to Badges", badges_path, class: "btn text-white", style: "background-color: #2F855A;" %>
 
                 <div class="d-flex gap-2">
-                    <%= link_to "✏️", edit_badge_path(@badge), class: "btn btn-primary btn-sm" %>
-                    <%= button_to badge_path(@badge), method: :delete, data: { confirm: "Are you sure you want to delete this badge?" }, class: "btn btn-danger btn-sm" do %>
-                        🗑️
+                    <% if can?(:edit, @badge) %>
+                        <%= link_to "✏️", edit_badge_path(@badge), class: "btn btn-primary btn-sm" %>
+                    <% end %>
+                    <% if can?(:destroy, @badge) %>
+                        <%= link_to "🗑️", badge_path(@badge),
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this badge?" },
+                            class: "btn btn-danger" %>
                     <% end %>
                 </div>
             </div>

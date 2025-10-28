@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show]
+    load_and_authorize_resource
 
     # INDEX: no es estrictamente necesario salvo si deseas directorio público; si lo implementas, mostrar username y link al perfil.
 

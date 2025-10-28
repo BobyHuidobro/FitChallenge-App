@@ -2,7 +2,7 @@ class BadgesController < ApplicationController
     before_action :set_badge, only: [:show, :edit, :update, :destroy]
     # # Requiere la autenticacion de admin  para eeditar, crear, delete
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-    before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def index
         @badges = Badge.all
@@ -46,11 +46,5 @@ class BadgesController < ApplicationController
 
     def badge_params
         params.require(:badge).permit(:name, :description, :icon_url)
-    end
-
-    def require_admin
-        unless current_user&.role_admin?
-            redirect_to badges_path, alert: 'No tienes permisos para realizar esa acción.'
-        end
     end
 end

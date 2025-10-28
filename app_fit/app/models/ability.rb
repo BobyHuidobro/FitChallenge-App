@@ -12,6 +12,7 @@ class Ability
 
     return unless user.role_admin?
     can :manage, :all
+    
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?

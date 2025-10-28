@@ -1,5 +1,6 @@
 class ScoringRulesController < ApplicationController
     before_action :set_scoring_rule, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def index
         @scoring_rules = ScoringRule.all

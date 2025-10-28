@@ -17,11 +17,15 @@ class User < ApplicationRecord
   
   # Validates
   validates :username, presence: true, uniqueness: true
+
   # role stored as integer in DB (see schema). Use ActiveRecord enum with prefix to avoid
   # method name collisions in the app.
-  enum role: { 
-    normal: 0, 
-    admin: 1 
+  # Usamos `_prefix` (nota el guion bajo) — y aquí usamos :user para mantener compatibilidad
+  # con los seeds/migraciones que usan 'user' como valor de texto original.
+  enum :role, {
+    user: 0,
+    admin: 1
   }, prefix: true
 
+  validates :role, presence: true
 end
