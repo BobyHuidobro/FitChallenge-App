@@ -1,21 +1,43 @@
-<%= form_with model: @scoring_rule do |sc| %>
-    <% if @scoring_rule.errors.any? %>
-        <div class="alert alert-danger">
-            <h5>There were errors with your submission:</h5>
-            <ul>
-                <% @scoring_rule.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
+<div class="container mt-4">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center py-4 rounded" style="background: linear-gradient(135deg, #2F855A, #38B2AC);">
+            <h1 class="display-5 mb-2 text-white">
+                <%= @scoring_rule.persisted? ? "✏️ Edit Scoring Rule" : "➕ New Scoring Rule" %>
+            </h1>
+            <p class="lead mb-0 text-white">Fill in the details below</p>
         </div>
-    <% end %>
-    <div class="col-4 mb-3">
-        <%= sc.label :rule_type, "Rule Type", class: "form-label" %>
-        <%= sc.text_field :rule_type, placeholder: "Type of the rule (name)", class: "form-control" %>
     </div>
-    <div class="col-8 mb-3">
-        <%= sc.rich_text_area :description, class: "form-control" %>
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <%= form_with model: @scoring_rule do |sc| %>
+                <% if @scoring_rule.errors.any? %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <h5 class="alert-heading"><strong>⚠️ There were errors with your submission:</strong></h5>
+                        <ul class="mb-0">
+                            <% @scoring_rule.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <% end %>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <%= sc.label :rule_type, "Rule Type", class: "form-label" %>
+                        <%= sc.text_field :rule_type, placeholder: "Type of the rule (name)", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <%= sc.label :description, "Description", class: "form-label" %>    
+                        <%= sc.rich_text_area :description, placeholder: "Description of the rule", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                    <% cancel_path = @scoring_rule.persisted? ? scoring_rule_path(@scoring_rule) : scoring_rules_path %>
+                    <%= link_to "Cancel", cancel_path, class: "btn btn-danger" %> <%= sc.submit "Save", class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
     </div>
-    <% cancel_path = @scoring_rule.persisted? ? scoring_rule_path(@scoring_rule) : scoring_rules_path %>
-    <%= link_to "Cancel", cancel_path, class: "btn btn-danger" %> <%= sc.submit "Save", class: "btn btn-primary" %>
-<% end %>
+</div>
