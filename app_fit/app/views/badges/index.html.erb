@@ -1,9 +1,12 @@
 </div><div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="display-5" style="color: #2F855A;">🏆 Badges</h1>
-        <span class="badge rounded-pill fs-6" style="background-color: #38B2AC;">
+        <span class="badge rounded-pill fs-6 center-end" style="background-color: #38B2AC;">
             <%= @badges.count %> Badges
         </span>
+        <% if current_user&.role == 'admin' %>
+        <%= link_to 'New Badge', new_badge_path, class: 'btn btn-sm btn-success ms-2' %>
+        <% end %>
     </div>
 
     <div class="row">
@@ -14,7 +17,7 @@
                         <div class="mb-3">
                             <img src="<%= badge.icon_url %>" alt="<%= badge.name %>" style="width: 80px; height: 80px; object-fit: contain;">
                         </div>
-                        
+
                         <h4 class="card-title">
                             <%= link_to badge.name, badge_path(badge), class: "text-decoration-none", style: "color: #2C7A7B;" %>
                         </h4>

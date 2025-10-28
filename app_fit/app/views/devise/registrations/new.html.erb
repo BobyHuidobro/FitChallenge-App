@@ -26,12 +26,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, options_for_select([['User', 'user'], ['Admin', 'admin']], 'user'), {}, {class: "form-select"} %>
-    <small class="form-text text-muted">Default: User (leave as is unless creating an admin account)</small>
-  </div>
-
+  
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

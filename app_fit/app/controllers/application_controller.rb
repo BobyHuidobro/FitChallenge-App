@@ -11,10 +11,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    # Permitir username y role en el registro
-    # Permitimos username but NOT role (role must be assigned by admins only)
+    # Permitir username en sign_up y account_update (no role by default)
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    # Permitir username en la actualización de cuenta (no role)
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+
+    # Permitir role en account_update SOLO si el usuario actual es admin
+    if current_user&.admin?
+      devise_parameter_sanitizer.permit(:account_update, keys: [:role])
+    end
   end
 end
