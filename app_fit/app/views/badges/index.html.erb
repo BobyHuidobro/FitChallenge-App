@@ -4,7 +4,7 @@
         <span class="badge rounded-pill fs-6 center-end" style="background-color: #38B2AC;">
             <%= @badges.count %> Badges
         </span>
-        <% if current_user&.role == 'admin' %>
+    <% if current_user&.role_admin? %>
         <%= link_to 'New Badge', new_badge_path, class: 'btn btn-sm btn-success ms-2' %>
         <% end %>
     </div>

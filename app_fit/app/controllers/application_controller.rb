@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
 
     # Permitir role en account_update SOLO si el usuario actual es admin
-    if current_user&.admin?
+    if current_user&.role_admin?
       devise_parameter_sanitizer.permit(:account_update, keys: [:role])
     end
   end

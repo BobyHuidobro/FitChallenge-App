@@ -17,9 +17,11 @@ class User < ApplicationRecord
   
   # Validates
   validates :username, presence: true, uniqueness: true
-  # role stored as integer in DB (see schema). Use ActiveRecord enum for convenience
-  # Cancancan and other code can use `user.admin?` / `user.normal?` helpers.
-  enum role: { normal: 0, admin: 1 }
+  # role stored as integer in DB (see schema). Use ActiveRecord enum with prefix to avoid
+  # method name collisions in the app.
+  enum role: { normal: 0, admin: 1 }, _prefix: true
 
   validates :role, presence: true
+
+  # Note: use the prefixed enum helpers `role_admin?`, `role_admin!` where needed.
 end

@@ -49,7 +49,7 @@ class BadgesController < ApplicationController
     end
 
     def require_admin
-        unless current_user&.role == 'admin'
+        unless current_user&.role_admin?
             redirect_to badges_path, alert: 'No tienes permisos para realizar esa acción.'
         end
     end
