@@ -1,0 +1,28 @@
+<%# Renders validation errors for a model `resource` or Devise flash messages in a consistent Bootstrap alert %>
+<%# Usage: render 'devise/shared/form_errors', resource: resource %>
+<%# If `resource` is present and has errors, show them; otherwise show flash messages (alert/notice/error) %>
+<%
+  messages = []
+  if local_assigns[:resource] && resource.respond_to?(:errors) && resource.errors.any?
+    # Use model validation errors
+    errors = resource.errors.full_messages
+  else
+    # collect flash messages (Devise sets flash[:alert] on failed sign in)
+    errors = []
+    errors << flash[:alert] if flash[:alert].present?
+    errors << flash[:notice] if flash[:notice].present?
+    errors << flash[:error] if flash[:error].present?
+  end
+%>
+
+<% if errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h5 class="alert-heading"><strong>⚠️ There were errors with your submission:</strong></h5>
+    <ul class="mb-0">
+      <% errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

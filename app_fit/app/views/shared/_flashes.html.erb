@@ -1,5 +1,12 @@
 <% flash.each do |key, msg| %>
   <% next if msg.blank? %>
+
+  <%# Avoid showing Devise auth errors twice: if this is a Devise sign_in or sign_up page, skip top-level alert flashes
+      because we render them inside the form via a shared partial. %>
+  <% if key.to_s == 'alert' && devise_controller? && ((controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new')) %>
+    <% next %>
+  <% end %>
+
   <% css_class = case key.to_s %>
     <% when 'alert', 'error' then 'alert-danger' %>
     <% when 'notice', 'success' then 'alert-success' %>

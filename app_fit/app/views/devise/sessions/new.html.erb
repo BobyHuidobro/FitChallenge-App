@@ -1,26 +1,42 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+<div class="container mt-5">
+	<div class="card shadow-sm mb-4">
+		<div class="card-body text-center py-4 rounded" style="background: linear-gradient(135deg, #2F855A, #38B2AC);">
+			<h1 class="display-5 mb-2 text-white">
+				🔐 Log In
+			</h1>
+			<p class="lead mb-0 text-white">Enter your credentials below</p>
+		</div>
+	</div>
+	<div class="card shadow-sm">
+		<div class="card-body p-4">
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				<%= render 'devise/shared/form_errors', resource: resource %>
+				<div class="row">
+					<div class="col-12 mb-3">
+						<%= f.label :email %><br />
+						<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 mb-3">
+						<%= f.label :password %><br />
+						<%= f.password_field :password, autocomplete: "current-password" %>
+					</div>
+				</div>
+				<% if devise_mapping.rememberable? %>
+					<div class="row">
+						<div class="col-12 mb-3">
+							<%= f.check_box :remember_me %>
+							<%= f.label :remember_me %>
+						</div>
+					</div>
+				<% end %>
+				<div class="d-flex justify-content-end gap-2 mt-4 pt-3">
+					<%= f.submit "Log in", class: "btn btn-primary" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 
 <%= render "devise/shared/links" %>
