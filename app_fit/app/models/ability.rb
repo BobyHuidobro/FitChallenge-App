@@ -10,8 +10,22 @@ class Ability
     can :create, [Challenge, ScoringRule]
     can [:update, :destroy], [Challenge, ScoringRule], user_id: user.id
 
-    return unless user.role_admin?
-    can :manage, :all
+    # Permissions for participations and progress entries for all logged-in users
+    can :create, Participation do |p|
+      p.challenge && !p.challenge.participants.include?(user)
+    end
+    can :destroy, Participation do |p|
+      p.user_id == user.id
+    end
+    can :create, ProgressEntry do |pe|
+      pe.challenge.participants.include?(user)
+    end
+
+    # Admins can do everything in addition
+    if user.role_admin?
+      can :manage, :all
+      can :manage, ProgressEntry
+    end
     
     # Define abilities for the user here. For example:
     #

@@ -1,0 +1,19 @@
+<%= form_with model: [@challenge, @entry], html: { id: "progress-entry-form" } do |f| %>
+    <%= render 'devise/shared/form_errors', resource: @entry %>
+    <div class="mb-3">
+        <%= f.label :entry_date %>
+        <%= f.date_field :entry_date, required: true, max: Date.today, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity, required: true, min: 1, step: 1, class: "form-control", data: { form_validation_target: "field" } %>
+    </div>
+    <div class="mb-3">
+        <%= f.label :points_awarded %>
+        <%= f.number_field :points_awarded, min: 0, step: 1, class: "form-control" %>
+    </div>
+    <div class="d-flex justify-content-end gap-2">
+        <%= link_to "Cancel", challenge_progress_entries_path(@challenge), class: "btn btn-secondary" %>
+        <%= f.submit "Save Progress", class: "btn btn-success" %>
+    </div>
+<% end %>

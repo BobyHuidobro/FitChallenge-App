@@ -45,8 +45,11 @@ class ChallengesController < ApplicationController
     end
 
     def destroy
-        @challenge.destroy
-        redirect_to challenges_path
+            if @challenge.destroy
+                redirect_to challenges_path, notice: "Challenge deleted."
+            else
+                redirect_to challenge_path(@challenge), alert: (@challenge.errors.full_messages.presence || ["Cannot delete challenge while there are participants."]).to_sentence
+            end
     end
 
     private

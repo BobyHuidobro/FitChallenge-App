@@ -7,7 +7,8 @@ class Challenge < ApplicationRecord
   has_rich_text :description
 
   ##relaciones faltantes
-  has_many :participations
+  # Prevent deleting a challenge while it has participants
+  has_many :participations, dependent: :restrict_with_error
   has_many :participants, through: :participations, source: :user
   has_many :progress_entries
   has_many :leaderboards
