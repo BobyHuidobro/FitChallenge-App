@@ -28,16 +28,16 @@
                 <div class="card-header text-white" style="background-color: #2C7A7B;">
                     <h5 class="mb-0">📈 Progress</h5>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <% @user.progress_entries.each do |progress| %>
-                        <li class="list-group-item">
-                            <small class="text-muted"><%= progress.entry_date %></small>
-                            <br>
-                            <strong><%= progress.challenge.name %></strong>
-                            <span class="badge bg-warning text-dark ms-2"><%= progress.points_awarded %> pts</span>
-                        </li> 
-                    <% end %>
-                </ul>
+                                <ul class="list-group list-group-flush">
+                                                        <% grouped = @user.progress_entries.group_by(&:challenge) %>
+                                                        <% grouped.each do |challenge, entries| %>
+                                                            <% total = entries.sum { |e| e.legacy_points.to_i + e.challenge.scoring_rule.pts_quantity(e.quantity) } %>
+                                                            <li class="list-group-item">
+                                                                <strong><%= challenge.name %></strong>
+                                                                <span class="badge bg-primary text-light ms-2">Total: <%= total %> pts</span>
+                                                            </li>
+                                                        <% end %>
+                                </ul>
             </div>
         </div>
 

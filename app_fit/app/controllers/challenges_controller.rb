@@ -17,12 +17,13 @@ class ChallengesController < ApplicationController
     end
 
     def new
-        @challenge = current_user.challenges.build
+        @challenge = Challenge.new
         @scoring_rules = ScoringRule.all
     end
 
     def create
-        @challenge = current_user.challenges.build challenge_params
+        @challenge = Challenge.new(challenge_params)
+        @challenge.user = current_user if !current_user.role_admin?
         @scoring_rules = ScoringRule.all
         if @challenge.save
             redirect_to challenge_path(@challenge)

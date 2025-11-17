@@ -2,7 +2,6 @@ class ProgressEntriesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_challenge
     before_action :ensure_participant!
-    load_and_authorize_resource
 
     def index
         @entries = @challenge.progress_entries.where(user: current_user).recent
@@ -13,6 +12,7 @@ class ProgressEntriesController < ApplicationController
     end
 
     def create
+        puntos = @challenge.scoring_rule.pts_quantity(entry_params[:quantity])
         @entry = @challenge.progress_entries.build(entry_params.merge(user: current_user))
         authorize! :create, @entry if defined?(Ability)
         if @entry.save
@@ -34,6 +34,6 @@ class ProgressEntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:progress_entry).permit(:entry_date, :quantity, :points_awarded)
+        params.require(:progress_entry).permit(:entry_date, :quantity)
     end
 end

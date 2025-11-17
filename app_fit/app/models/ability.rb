@@ -22,7 +22,7 @@ class Ability
     end
 
     # Admins can do everything in addition
-    if user.role_admin?
+  if user.role_admin?
       can :manage, :all
       can :manage, ProgressEntry
     end

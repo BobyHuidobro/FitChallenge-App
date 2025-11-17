@@ -132,46 +132,60 @@ puts "📊 Creando reglas de puntuación..."
 # Scoring Rules
 scoring_rules = [
   ScoringRule.create!(
-    rule_type: 'Distancia',
-    description: '1 punto por cada kilómetro recorrido',
-    user: users[0],
-    public: true
+     rule_type: 'Distancia',
+     description: '1 punto por cada kilómetro recorrido',
+     factor: 1,
+     unidad: 1,
+     user: users[0],
+     public: true
   ),
   ScoringRule.create!(
-    rule_type: 'Tiempo',
-    description: '10 puntos por cada hora de ejercicio',
-    user: users[0],
-    public: true
+     rule_type: 'Tiempo',
+     description: '10 puntos por cada hora de ejercicio',
+     factor: 10,
+     unidad: 1,
+     user: users[0],
+     public: true
   ),
   ScoringRule.create!(
-    rule_type: 'Repeticiones',
-    description: '1 punto por cada 10 repeticiones',
-    user: users[1],
-    public: true
+     rule_type: 'Repeticiones',
+     description: '1 punto por cada 10 repeticiones',
+     factor: 1,
+     unidad: 10,
+     user: users[1],
+     public: true
   ),
   ScoringRule.create!(
-    rule_type: 'Calorías',
-    description: '1 punto por cada 100 calorías quemadas',
-    user: users[2],
-    public: true
+     rule_type: 'Calorías',
+     description: '1 punto por cada 100 calorías quemadas',
+     factor: 1,
+     unidad: 100,
+     user: users[2],
+     public: true
   ),
   ScoringRule.create!(
-    rule_type: 'Sesiones',
-    description: '50 puntos por cada sesión completada',
-    user: users[0],
-    public: true
+     rule_type: 'Sesiones',
+     description: '50 puntos por cada sesión completada',
+     factor: 50,
+     unidad: 1,
+     user: users[0],
+     public: true
   ),
   ScoringRule.create!(
-    rule_type: 'Pasos',
-    description: '1 punto por cada 1000 pasos',
-    user: users[3],
-    public: true
+     rule_type: 'Pasos',
+     description: '1 punto por cada 1000 pasos',
+     factor: 1,
+     unidad: 1000,
+     user: users[3],
+     public: true
   ),
   ScoringRule.create!(
-    rule_type: 'Personalizada',
-    description: 'Sistema de puntos personalizado del usuario',
-    user: users[4],
-    public: false
+     rule_type: 'Personalizada',
+     description: 'Sistema de puntos personalizado del usuario',
+     factor: 1,
+     unidad: 10,
+     user: users[4],
+     public: false
   )
 ]
 

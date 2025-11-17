@@ -82,7 +82,7 @@
                                     <div>
                                         <strong><%= e.entry_date %></strong>
                                         <span class="text-muted ms-2">Qty: <%= e.quantity %></span>
-                                        <span class="text-muted ms-2">Points: <%= e.points_awarded %></span>
+                                        <span class="text-muted ms-2">Points: <%= e.challenge.scoring_rule.pts_quantity(e.quantity) %></span>
                                     </div>
                                 </li>
                             <% end %>

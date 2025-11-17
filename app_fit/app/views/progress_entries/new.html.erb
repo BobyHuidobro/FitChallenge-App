@@ -7,6 +7,27 @@
 
   <div class="card shadow-sm">
     <div class="card-body p-4">
+      <div class="card-body">
+        <h2 class="mb-3" style="color: #2F855A;">Scoring Rules</h2>
+        <% if @challenge.scoring_rule.present? %>
+        <div class="card" style="border-left: 4px solid #38B2AC; background-color: #F7FAFC;">
+          <div class="card-body">
+            <h4 class="mb-3">
+            <%= link_to @challenge.scoring_rule.rule_type, scoring_rule_path(@challenge.scoring_rule), 
+                class: "text-decoration-none", 
+                style: "color: #2C7A7B; font-weight: 600;" %>
+            </h4>
+            <p class="mb-0" style="color: #4A5568; line-height: 1.6;">
+              <%= @challenge.scoring_rule.description %>
+            </p>
+          </div>
+        </div>
+        <% else %>
+        <div class="alert alert-info">
+          <i class="bi bi-info-circle"></i> No scoring rule assigned.
+        </div>
+        <% end %>
+        </div>
       <%= form_with model: [@challenge, @entry], data: { controller: "form-vaildation" } do |f| %>
         <%= render 'devise/shared/form_errors', resource: @entry %>
 
@@ -18,11 +39,6 @@
         <div class="mb-3">
           <%= f.label :quantity, class: "form-label" %>
           <%= f.number_field :quantity, required: true, min: 1, step: 1, class: "form-control", placeholder: "Quantity (e.g., reps, km)", data: { "form-vaildation-target": "field" } %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :points_awarded, class: "form-label" %>
-          <%= f.number_field :points_awarded, required: true, min: 0, step: 1, class: "form-control", data: { "form-vaildation-target": "field" } %>
         </div>
 
         <div class="d-flex justify-content-end gap-2 mt-3">

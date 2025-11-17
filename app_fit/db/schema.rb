@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_28_012532) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_16_202336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -110,11 +110,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_012532) do
     t.bigint "user_id", null: false
     t.bigint "challenge_id", null: false
     t.date "entry_date"
-    t.integer "points_awarded"
     t.integer "quantity"
     t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "points_awarded"
+    t.integer "legacy_points"
     t.index ["challenge_id"], name: "index_progress_entries_on_challenge_id"
     t.index ["user_id"], name: "index_progress_entries_on_user_id"
   end
@@ -126,6 +127,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_28_012532) do
     t.boolean "public", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "factor"
+    t.integer "unidad"
     t.index ["user_id"], name: "index_scoring_rules_on_user_id"
   end
 

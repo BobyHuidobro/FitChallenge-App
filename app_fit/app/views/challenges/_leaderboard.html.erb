@@ -3,6 +3,7 @@
     <h2 class="mb-4" style="color: #2F855A;">🏆 Leaderboard</h2>
     
     <% if @leaderboards.any? %>
+      <% sorted_leaderboards = @leaderboards.sort_by { |lb| -lb.dynamic_total_points } %>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead style="background-color: #2F855A; color: white;">
@@ -13,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @leaderboards.each_with_index do |leaderboard, index| %>
+            <% sorted_leaderboards.each_with_index do |leaderboard, index| %>
               <tr class="<%= 'table-warning' if index == 0 %> <%= 'table-secondary' if index == 1 %> <%= 'table-light' if index == 2 %>">
                 <td class="text-center">
                   <% if index == 0 %>
@@ -33,7 +34,7 @@
                 </td>
                 <td class="text-center">
                   <span class="badge rounded-pill" style="background-color: #38B2AC; font-size: 1rem;">
-                    <%= leaderboard.total_points || 0 %> pts
+                    <%= leaderboard.dynamic_total_points %> pts
                   </span>
                 </td>
               </tr>

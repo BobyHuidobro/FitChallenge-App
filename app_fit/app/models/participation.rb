@@ -8,6 +8,12 @@ class Participation < ApplicationRecord
 
   before_create :set_joined_at
 
+  after_save :update_leaderboard
+
+  def update_leaderboard
+    Leaderboard.update_for_challenge(self.challenge)
+  end
+
   def set_joined_at
     self.joined_at ||= Time.current
     self.status ||= 'active'

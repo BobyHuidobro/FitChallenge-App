@@ -44,7 +44,7 @@ class ScoringRulesController < ApplicationController
     end
 
     def scoring_rule_params
-        params.require(:scoring_rule).permit(:rule_type, :description)
+        params.require(:scoring_rule).permit(:rule_type, :description, :factor, :unidad)
     end
 
     def uri_is_local?(path)

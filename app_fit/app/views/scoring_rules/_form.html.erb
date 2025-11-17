@@ -30,7 +30,17 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <%= sc.label :description, "Description", class: "form-label" %>    
-                        <%= sc.rich_text_area :description, placeholder: "Description of the rule", class: "form-control" %>
+                        <%= sc.rich_text_area :description, placeholder: "Description of the rule | Ej: 1 punto por cada 10 repeticiones ", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <%= sc.label :factor, "Factor (puntos por unidad)", class: "form-label" %>
+                        <%= sc.number_field :factor, placeholder: "Ej: 1, 10, 50 | pts ", class: "form-control", min: 1, step: 1 %>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <%= sc.label :unidad, "Unidad (cantidad por punto)", class: "form-label" %>
+                        <%= sc.number_field :unidad, placeholder: "Ej: 1, 10, 100 | cantidad ", class: "form-control", min: 1, step: 1 %>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
