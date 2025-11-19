@@ -13,11 +13,12 @@ class ProgressEntry < ApplicationRecord
   after_save :update_leaderboard
 
   def update_leaderboard
-    # Actualiza los puntos totales de la participación
+    # Actualiza los puntos totales de la participación calculando por regla de puntuación
     participation = Participation.find_by(user: user, challenge: challenge)
-    if participation
-      participation.total_points = challenge.progress_entries.where(user: user).sum(:points_awarded)
-      participation.save!
-    end
+    return unless participation
+
+    entries = challenge.progress_entries.where(user: user, approved: true)
+    total_points = entries.sum { |e| e.challenge.scoring_rule.pts_quantity(e.quantity) + e.legacy_points.to_i }
+    participation.update!(total_points: total_points)
   end
 end

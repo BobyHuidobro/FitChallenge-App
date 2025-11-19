@@ -2,6 +2,8 @@ class Leaderboard < ApplicationRecord
   belongs_to :challenge
   belongs_to :user
 
+  validates :user_id, uniqueness: { scope: :challenge_id }
+
 
   def self.update_for_challenge(challenge)
     # Obtiene todas las participaciones del desafío, ordenadas por puntos descendente
@@ -15,6 +17,8 @@ class Leaderboard < ApplicationRecord
   end
   # Devuelve la suma real de puntos del usuario en el challenge
   def dynamic_total_points
-    challenge.progress_entries.where(user: user, approved: true).sum { |e| (e.points_awarded || 0) + (e.legacy_points || 0) }
+    challenge.progress_entries.where(user: user, approved: true).sum do |e|
+      e.challenge.scoring_rule.pts_quantity(e.quantity) + e.legacy_points.to_i
+    end
   end
 end

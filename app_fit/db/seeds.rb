@@ -314,83 +314,51 @@ puts "📝 Creando entradas de progreso..."
 # Progress Entries
 progress_entries = [
   # Entradas para el desafío de Maratón
-  ProgressEntry.create!(user: users[2], challenge: challenges[0], entry_date: Date.today - 5.days, points_awarded: 10, quantity: 10, approved: true),
-  ProgressEntry.create!(user: users[2], challenge: challenges[0], entry_date: Date.today - 3.days, points_awarded: 15, quantity: 15, approved: true),
-  ProgressEntry.create!(user: users[3], challenge: challenges[0], entry_date: Date.today - 6.days, points_awarded: 12, quantity: 12, approved: true),
-  ProgressEntry.create!(user: users[3], challenge: challenges[0], entry_date: Date.today - 4.days, points_awarded: 18, quantity: 18, approved: true),
-  ProgressEntry.create!(user: users[3], challenge: challenges[0], entry_date: Date.today - 1.day, points_awarded: 20, quantity: 20, approved: true),
-  ProgressEntry.create!(user: users[5], challenge: challenges[0], entry_date: Date.today - 7.days, points_awarded: 25, quantity: 25, approved: true),
+  ProgressEntry.create!(user: users[2], challenge: challenges[0], entry_date: Date.today - 5.days, quantity: 10, approved: true),
+  ProgressEntry.create!(user: users[2], challenge: challenges[0], entry_date: Date.today - 3.days, quantity: 15, approved: true),
+  ProgressEntry.create!(user: users[3], challenge: challenges[0], entry_date: Date.today - 6.days, quantity: 12, approved: true),
+  ProgressEntry.create!(user: users[3], challenge: challenges[0], entry_date: Date.today - 4.days, quantity: 18, approved: true),
+  ProgressEntry.create!(user: users[3], challenge: challenges[0], entry_date: Date.today - 1.day, quantity: 20, approved: true),
+  ProgressEntry.create!(user: users[5], challenge: challenges[0], entry_date: Date.today - 7.days, quantity: 25, approved: true),
   
   # Entradas para Yoga
-  ProgressEntry.create!(user: users[1], challenge: challenges[1], entry_date: Date.today - 10.days, points_awarded: 50, quantity: 1, approved: true),
-  ProgressEntry.create!(user: users[1], challenge: challenges[1], entry_date: Date.today - 9.days, points_awarded: 50, quantity: 1, approved: true),
-  ProgressEntry.create!(user: users[1], challenge: challenges[1], entry_date: Date.today - 8.days, points_awarded: 50, quantity: 1, approved: true),
-  ProgressEntry.create!(user: users[4], challenge: challenges[1], entry_date: Date.today - 8.days, points_awarded: 50, quantity: 1, approved: true),
-  ProgressEntry.create!(user: users[4], challenge: challenges[1], entry_date: Date.today - 6.days, points_awarded: 50, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[1], challenge: challenges[1], entry_date: Date.today - 10.days, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[1], challenge: challenges[1], entry_date: Date.today - 9.days, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[1], challenge: challenges[1], entry_date: Date.today - 8.days, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[4], challenge: challenges[1], entry_date: Date.today - 8.days, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[4], challenge: challenges[1], entry_date: Date.today - 6.days, quantity: 1, approved: true),
   
   # Entradas para Ciclismo
-  ProgressEntry.create!(user: users[2], challenge: challenges[2], entry_date: Date.today - 5.days, points_awarded: 45, quantity: 45, approved: true),
-  ProgressEntry.create!(user: users[7], challenge: challenges[2], entry_date: Date.today - 4.days, points_awarded: 50, quantity: 50, approved: true),
-  ProgressEntry.create!(user: users[8], challenge: challenges[2], entry_date: Date.today - 3.days, points_awarded: 35, quantity: 35, approved: true),
+  ProgressEntry.create!(user: users[2], challenge: challenges[2], entry_date: Date.today - 5.days, quantity: 45, approved: true),
+  ProgressEntry.create!(user: users[7], challenge: challenges[2], entry_date: Date.today - 4.days, quantity: 50, approved: true),
+  ProgressEntry.create!(user: users[8], challenge: challenges[2], entry_date: Date.today - 3.days, quantity: 35, approved: true),
   
   # Entradas para Quema Calorías
-  ProgressEntry.create!(user: users[1], challenge: challenges[3], entry_date: Date.today - 3.days, points_awarded: 38, quantity: 3800, approved: true),
-  ProgressEntry.create!(user: users[5], challenge: challenges[3], entry_date: Date.today - 2.days, points_awarded: 45, quantity: 4500, approved: true),
+  ProgressEntry.create!(user: users[1], challenge: challenges[3], entry_date: Date.today - 3.days, quantity: 3800, approved: true),
+  ProgressEntry.create!(user: users[5], challenge: challenges[3], entry_date: Date.today - 2.days, quantity: 4500, approved: true),
   
   # Entradas para Natación
-  ProgressEntry.create!(user: users[2], challenge: challenges[5], entry_date: Date.today - 15.days, points_awarded: 25, quantity: 25, approved: true),
-  ProgressEntry.create!(user: users[3], challenge: challenges[5], entry_date: Date.today - 12.days, points_awarded: 20, quantity: 20, approved: true),
+  ProgressEntry.create!(user: users[2], challenge: challenges[5], entry_date: Date.today - 15.days, quantity: 25, approved: true),
+  ProgressEntry.create!(user: users[3], challenge: challenges[5], entry_date: Date.today - 12.days, quantity: 20, approved: true),
   
   # Entradas para Caminata
-  ProgressEntry.create!(user: users[4], challenge: challenges[6], entry_date: Date.today - 10.days, points_awarded: 10, quantity: 10000, approved: true),
-  ProgressEntry.create!(user: users[4], challenge: challenges[6], entry_date: Date.today - 9.days, points_awarded: 10, quantity: 10000, approved: true),
-  ProgressEntry.create!(user: users[8], challenge: challenges[6], entry_date: Date.today - 8.days, points_awarded: 10, quantity: 10000, approved: true),
+  ProgressEntry.create!(user: users[4], challenge: challenges[6], entry_date: Date.today - 10.days, quantity: 10000, approved: true),
+  ProgressEntry.create!(user: users[4], challenge: challenges[6], entry_date: Date.today - 9.days, quantity: 10000, approved: true),
+  ProgressEntry.create!(user: users[8], challenge: challenges[6], entry_date: Date.today - 8.days, quantity: 10000, approved: true),
   
   # Entradas para CrossFit
-  ProgressEntry.create!(user: users[1], challenge: challenges[7], entry_date: Date.today - 7.days, points_awarded: 50, quantity: 1, approved: true),
-  ProgressEntry.create!(user: users[1], challenge: challenges[7], entry_date: Date.today - 5.days, points_awarded: 50, quantity: 1, approved: true),
-  ProgressEntry.create!(user: users[6], challenge: challenges[7], entry_date: Date.today - 6.days, points_awarded: 50, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[1], challenge: challenges[7], entry_date: Date.today - 7.days, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[1], challenge: challenges[7], entry_date: Date.today - 5.days, quantity: 1, approved: true),
+  ProgressEntry.create!(user: users[6], challenge: challenges[7], entry_date: Date.today - 6.days, quantity: 1, approved: true),
   
   # Algunas entradas pendientes de aprobación
-  ProgressEntry.create!(user: users[2], challenge: challenges[0], entry_date: Date.today, points_awarded: 0, quantity: 8, approved: false),
-  ProgressEntry.create!(user: users[4], challenge: challenges[1], entry_date: Date.today, points_awarded: 0, quantity: 1, approved: false)
+  ProgressEntry.create!(user: users[2], challenge: challenges[0], entry_date: Date.today, quantity: 8, approved: false),
+  ProgressEntry.create!(user: users[4], challenge: challenges[1], entry_date: Date.today, quantity: 1, approved: false)
 ]
 
-puts "🥇 Creando tablas de clasificación..."
-# Leaderboards
-leaderboards = [
-  # Leaderboard Desafío 1 - Maratón
-  Leaderboard.create!(challenge: challenges[0], user: users[5], total_points: 91, rank: 1),
-  Leaderboard.create!(challenge: challenges[0], user: users[3], total_points: 82, rank: 2),
-  Leaderboard.create!(challenge: challenges[0], user: users[2], total_points: 65, rank: 3),
-  Leaderboard.create!(challenge: challenges[0], user: users[4], total_points: 45, rank: 4),
-  
-  # Leaderboard Desafío 2 - Yoga
-  Leaderboard.create!(challenge: challenges[1], user: users[1], total_points: 700, rank: 1),
-  Leaderboard.create!(challenge: challenges[1], user: users[6], total_points: 650, rank: 2),
-  Leaderboard.create!(challenge: challenges[1], user: users[4], total_points: 600, rank: 3),
-  
-  # Leaderboard Desafío 3 - Ciclismo
-  Leaderboard.create!(challenge: challenges[2], user: users[7], total_points: 140, rank: 1),
-  Leaderboard.create!(challenge: challenges[2], user: users[2], total_points: 125, rank: 2),
-  Leaderboard.create!(challenge: challenges[2], user: users[8], total_points: 95, rank: 3),
-  
-  # Leaderboard Desafío 4 - Calorías
-  Leaderboard.create!(challenge: challenges[3], user: users[5], total_points: 92, rank: 1),
-  Leaderboard.create!(challenge: challenges[3], user: users[1], total_points: 78, rank: 2),
-  
-  # Leaderboard Desafío 6 - Natación
-  Leaderboard.create!(challenge: challenges[5], user: users[2], total_points: 50, rank: 1),
-  Leaderboard.create!(challenge: challenges[5], user: users[3], total_points: 45, rank: 2),
-  
-  # Leaderboard Desafío 7 - Caminata
-  Leaderboard.create!(challenge: challenges[6], user: users[4], total_points: 140, rank: 1),
-  Leaderboard.create!(challenge: challenges[6], user: users[8], total_points: 120, rank: 2),
-  
-  # Leaderboard Desafío 8 - CrossFit
-  Leaderboard.create!(challenge: challenges[7], user: users[1], total_points: 500, rank: 1),
-  Leaderboard.create!(challenge: challenges[7], user: users[6], total_points: 450, rank: 2)
-]
+puts "🥇 Construyendo tablas de clasificación desde participaciones..."
+Leaderboard.destroy_all
+Challenge.find_each { |ch| Leaderboard.update_for_challenge(ch) }
 
 puts "🔔 Creando notificaciones..."
 # Notifications

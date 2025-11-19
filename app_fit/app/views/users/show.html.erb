@@ -29,7 +29,7 @@
                     <h5 class="mb-0">📈 Progress</h5>
                 </div>
                                 <ul class="list-group list-group-flush">
-                                                        <% grouped = @user.progress_entries.group_by(&:challenge) %>
+                                                        <% grouped = @user.progress_entries.where(approved: true).group_by(&:challenge) %>
                                                         <% grouped.each do |challenge, entries| %>
                                                             <% total = entries.sum { |e| e.legacy_points.to_i + e.challenge.scoring_rule.pts_quantity(e.quantity) } %>
                                                             <li class="list-group-item">
