@@ -266,7 +266,7 @@ input[type="checkbox"] {
 .btn-outline-success:hover {
     background-color: var(--texto-blanco) !important;
     color: var(--color-primario) !important;
-    border-color: var(--texto-blanco) !important;
+    border-color: var(--color-primario-hover) !important;
 }
 
 .btn-outline-secondary {
@@ -276,9 +276,9 @@ input[type="checkbox"] {
 }
 
 .btn-outline-secondary:hover {
-    background-color: var(--color-secundario) !important;
-    color: var(--texto-blanco) !important;
-    border-color: var(--color-secundario) !important;
+    background-color: var(--texto-blanco) !important;
+    color: var(--color-secundario) !important;
+    border-color: var(--color-secundario-hover) !important;
 }
 
 /* ==================== UTILITIES ==================== */
