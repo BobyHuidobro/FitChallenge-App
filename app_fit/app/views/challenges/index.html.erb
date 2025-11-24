@@ -8,5 +8,10 @@
                 <p><%= challenge.description %></p>
             </li>
         <% end %>
+        <% if params[:query].present? && @challenges.empty? %>
+            <div class="alert alert-info">
+                No challenges found matching "<%= params[:query] %>"
+            </div>
+        <% end %>
     </ul>
 </div>

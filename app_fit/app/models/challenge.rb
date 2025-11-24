@@ -19,6 +19,11 @@ class Challenge < ApplicationRecord
   validates :end_date, presence: true
   validate :end_date_after_start_date
 
+  scope :search, ->(query) {
+    where("name ILIKE ? OR category ILIKE ?",
+          "%#{query}%", "%#{query}%")
+  }
+
   ##definiendo el metodo de end <start
   private
 

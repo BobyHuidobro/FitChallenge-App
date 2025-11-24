@@ -4,7 +4,11 @@ class ChallengesController < ApplicationController
     load_and_authorize_resource
 
     def index
-        @challenges = Challenge.all
+        if params[:query].present?
+            @challenges = Challenge.search(params[:query])
+        else
+            @challenges = Challenge.all
+        end
     end
 
     def show

@@ -269,6 +269,18 @@ input[type="checkbox"] {
     border-color: var(--texto-blanco) !important;
 }
 
+.btn-outline-secondary {
+    border: 2px solid var(--texto-blanco) !important;
+    color: var(--texto-blanco) !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-secundario) !important;
+    color: var(--texto-blanco) !important;
+    border-color: var(--color-secundario) !important;
+}
+
 /* ==================== UTILITIES ==================== */
 .text-primary {
     color: var(--color-primario) !important;

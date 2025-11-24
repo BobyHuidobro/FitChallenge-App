@@ -21,10 +21,13 @@
           <%= link_to "Badges", badges_path, class: "nav-link #{current_page?(badges_path) ? 'active' : ''}" %>
           </li>
       </ul>
-      <form class="d-flex mx-auto" role="search" style="max-width: 400px;">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= form_with url: challenges_path, method: :get, class: "d-flex mx-auto", style: "max-width: 400px;" do |f| %>
+        <%= f.text_field :query, value: params[:query], class: "form-control me-2", placeholder: "Search challenges", aria: { label: "Search" } %>
+        <%= f.submit "Search", class: "btn btn-outline-success" %>
+        <% if params[:query].present? %>
+          <%= link_to "Clear", challenges_path, class: "btn btn-outline-secondary ms-2" %>
+        <% end %>
+      <% end %>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown" style="position: relative; z-index: 1000;">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
