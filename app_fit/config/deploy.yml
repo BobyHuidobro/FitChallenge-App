@@ -2,12 +2,12 @@
 service: app_fit
 
 # Name of the container image.
-image: your-user/app_fit
+image: bobyhuidobro/app_fit
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 138.68.8.185
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -18,8 +18,8 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl: true
-  host: app.example.com
+  ssl: false
+
 
 # Credentials for your image host.
 registry:
