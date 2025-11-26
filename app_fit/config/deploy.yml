@@ -10,7 +10,7 @@ servers:
     hosts:
       - 138.68.8.185
     options:
-      network: "host"
+      add-host: "host.docker.internal:host-gateway"
   # job:
   #   hosts:
   #     - 192.168.0.1
