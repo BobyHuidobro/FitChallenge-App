@@ -7,7 +7,10 @@ image: bobyhudobro/app_fit
 # Deploy to these servers.
 servers:
   web:
-    - 138.68.8.185
+    hosts:
+      - 138.68.8.185
+    options:
+      network: "host"
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -95,16 +98,17 @@ builder:
 #   user: app
 
 # Use accessory services (secrets come from .kamal/secrets).
-accessories:
-  db:
-    image: postgres:16
-    host: 138.68.8.185
-    port: "127.0.0.1:5432:5432"
-    env:
-      clear:
-        POSTGRES_USER: app_fit
-        POSTGRES_DB: app_fit_production
-      secret:
-        - POSTGRES_PASSWORD
-    directories:
-      - data:/var/lib/postgresql/data
+# Commented out because we're using existing PostgreSQL on the host
+# accessories:
+#   db:
+#     image: postgres:16
+#     host: 138.68.8.185
+#     port: "127.0.0.1:5432:5432"
+#     env:
+#       clear:
+#         POSTGRES_USER: app_fit
+#         POSTGRES_DB: app_fit_production
+#       secret:
+#         - POSTGRES_PASSWORD
+#     directories:
+#       - data:/var/lib/postgresql/data
